@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build Android AAB
 
 on:
   workflow_dispatch:
@@ -14,14 +14,6 @@ jobs:
         with:
           node-version: 22
 
-      - run: npm install
-
-      - run: npm run build
-
-      - run: npm install @capacitor/cli @capacitor/core @capacitor/android
-
-      - run: npx cap sync android
-
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -29,12 +21,23 @@ jobs:
 
       - uses: android-actions/setup-android@v3
 
-      - run: |
+      - name: Install packages
+        run: npm install
+
+      - name: Build React
+        run: npm run build
+
+      - name: Capacitor sync
+        run: npx cap sync android
+
+      - name: Build AAB
+        run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew bundleRelease
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload AAB
+        uses: actions/upload-artifact@v4
         with:
-          name: Calculator-APK
-          path: android/app/build/outputs/apk/debug/app-debug.apk
+          name: calculator-aab
+          path: android/app/build/outputs/bundle/release/*.aab
