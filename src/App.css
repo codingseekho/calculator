@@ -1,0 +1,170 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg,#0f172a,#312e81);
+}
+
+
+.calculator {
+  width: 360px;
+  margin: 60px auto;
+  padding: 25px;
+  background: #1e293b;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  text-align: center;
+  animation: popup 0.5s ease;
+}
+
+
+.calculator h1 {
+  color: white;
+  margin-bottom: 20px;
+}
+
+
+.calculator input {
+  width: 90%;
+  height: 55px;
+  font-size: 28px;
+  text-align: right;
+  padding: 10px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 20px;
+  background: #f8fafc;
+}
+
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 12px;
+}
+
+
+.buttons button {
+  height: 55px;
+  font-size: 22px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background: #334155;
+  color: white;
+  transition: 0.2s;
+}
+
+
+.buttons button:hover {
+  background: #475569;
+  transform: scale(1.05);
+}
+
+
+.buttons button:nth-last-child(2) {
+  background: #ef4444;
+}
+
+
+.buttons button:nth-last-child(1) {
+  background: #f59e0b;
+}
+
+
+.history {
+  margin-top: 25px;
+  color: white;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+
+.history h2 {
+  font-size: 20px;
+}
+
+
+.history p {
+  background: #334155;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.clear-history {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+
+.clear-history:hover {
+  background: #16a34a;
+}
+
+
+@media(max-width:500px){
+
+  .calculator{
+    width: 90%;
+    margin: 30px auto;
+  }
+
+  .buttons button{
+    height: 50px;
+    font-size: 18px;
+  }
+
+}
+
+@keyframes popup {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.buttons button:active {
+  transform: scale(0.9);
+}
+
+
+.calculator input:focus {
+  outline: 3px solid #38bdf8;
+}
+
+
+
+.app-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+
+
+
+.app-title::before {
+  content: "🧮";
+  font-size: 30px;
+}
+
+
+
+.app-title h1 {
+  color: white;
+  margin: 0;
+  font-size: 26px;
+}
+
